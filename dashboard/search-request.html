@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<label>Search github:</label>
+	<input id="queryInput" type="text" value="nodecg"></input>
+	<button id="submitButton">Submit</button>
+</body>
+
+<script>
+	const queryInput = document.querySelector('#queryInput');
+	const submitButton = document.querySelector('#submitButton');
+
+	submitButton.onclick = () => {
+		nodecg.sendMessage('findRepositories', queryInput.value);
+	};
+</script>
+</html>

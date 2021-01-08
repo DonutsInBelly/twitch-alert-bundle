@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			#alert {
+				font-family: "Ubuntu", sans-serif;
+				font-size: 5em;
+				color: antiquewhite;
+				text-align: center;
+				-webkit-text-stroke: 3px black;
+			}
+			#follow-gif {
+				display: none;
+				width: 50%;
+				height: auto;
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="alert"></div>
+		<div id="hype-anim">
+			<img
+				id="follow-gif"
+				src="https://media.giphy.com/media/d6DgWX8JepXeuftjjl/giphy.gif"
+			/>
+		</div>
+	</body>
+
+	<script>
+		const twitchAlert = document.getElementById("alert");
+		const followGif = document.getElementById("follow-gif");
+		const followerAlert = nodecg.Replicant("follower-alert");
+		followerAlert.on("change", (newValue, oldValue) => {
+			if (!newValue) {
+				return;
+			}
+
+			followGif.style.display = "block";
+			twitchAlert.innerText = `${newValue} started following!`;
+			setTimeout(() => {
+				twitchAlert.innerText = "";
+				followGif.style.display = "none";
+			}, 5000);
+		});
+	</script>
+</html>
