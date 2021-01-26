@@ -1,8 +1,8 @@
 const axios = require("axios");
 import path from "path";
-import { ApiClient, HelixStream } from "twitch";
+import { ApiClient, UserIdResolvable } from "twitch";
 import { ClientCredentialsAuthProvider } from "twitch-auth";
-import { SimpleAdapter, WebHookListener } from "twitch-webhooks";
+import { WebHookListener } from "twitch-webhooks";
 import { NgrokAdapter } from "twitch-webhooks-ngrok";
 
 require("dotenv").config({ path: path.join(__dirname, "../.env") });
@@ -18,7 +18,7 @@ module.exports = async (nodecg) => {
   const apiClient = new ApiClient({ authProvider });
 
   const listener = new WebHookListener(apiClient, new NgrokAdapter());
-  const userId = process.env.TWITCH_USER_ID;
+  const userId = process.env.TWITCH_USER_ID as UserIdResolvable;
   const twitchFollowerReplicant = nodecg.Replicant("follower-alert");
   await listener.subscribeToFollowsToUser(userId, async (helixFollow) => {
     nodecg.log.info(`${helixFollow.userDisplayName} started following!`);

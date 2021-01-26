@@ -16,15 +16,6 @@
         "width": 800,
         "height": 600
       }
-    ],
-    "dashboardPanels": [
-      {
-        "name": "search-input",
-        "title": "GitHubSearch",
-        "width": "3",
-        "file": "search-request.html",
-        "headerColor": "#3d3d3d"
-      }
     ]
   },
   "dependencies": {
